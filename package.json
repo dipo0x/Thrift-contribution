@@ -1,0 +1,31 @@
+{
+  "name": "backend-test",
+  "version": "1.0.0",
+  "description": "Esusu Confam Ltd API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adesiyanoladipo/Esusu-Confam-Ltd.git"
+  },
+  "author": "Oladipo Adesiyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adesiyanoladipo/Esusu-Confam-Ltd/issues"
+  },
+  "homepage": "https://github.com/adesiyanoladipo/Esusu-Confam-Ltd#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.2.1",
+    "nodemon": "^2.0.15",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0",
+    "validator": "^13.7.0"
+  }
+}
