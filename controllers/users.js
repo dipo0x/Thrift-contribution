@@ -1,5 +1,6 @@
 const { signup } = require('../utils/validator')
 const userData = require('../models/user')
+const User = require('../models/user')
 const bcryptjs = require('bcryptjs')
 const passport = require('passport')
 let LocalStrategy = require('passport-local').Strategy;
@@ -16,11 +17,13 @@ passport.deserializeUser(function(id, done){
 	})
 })
 
+///fix why it is not logging in
+
 passport.use(new LocalStrategy(
   function(username, password, done) {
     userData.findOne({ username: username}, function (err, user) {
       if (err) { 
-          return done(err); 
+          console.log(err)
         }
       if (!user) { 
       	return done(null, false);
