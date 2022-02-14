@@ -1,40 +1,49 @@
-const { signup, newPasswordV, emailV } = require('../utils/validators')
-const userData = require('../models/users')
+const { signup } = require('../utils/validator')
+const userData = require('../models/user')
 const bcryptjs = require('bcryptjs')
 const passport = require('passport')
-const userData = require('../models/users')
+const Response = require("../utils/response.handler.js");
 
-exports.get_register = function(req, res, next) {
-    res.render('user/register');
-}
-
-exports.register = async function(req, res, next) {
+exports.register = async (req, res) => {
+    console.log(req.body.email)
     const theUsername = req.body.username
     const theEmail = req.body.email
     const thePassword = req.body.password
     const newPassword = await bcryptjs.hash(thePassword, 10)
     const { errors, valid } = signup(theUsername, thePassword, theEmail);
     userData.findOne({username: theUsername}).then(user=>{
-		const theErrors = {};
         if(user !== null){
-            theErrors["username_exists"] = "Username already in use"
-            username_register(req, res, theErrors);
+            return Response.send(
+                res,
+                200,
+                "Username already in use"
+              );
         }
         else{
             if(!valid){
-                rerender_register(req, res, errors);
+                return Response.send(
+                    res,
+                    200,
+                    errors
+                  );
             }
             else{
                 userData.findOne({email: theEmail}).then(user=>{
                     if(user){
-                        errors["email"] = "Email exists";
-                        rerender_register(req, res, errors);
+                        return Response.send(
+                            res,
+                            200,
+                            "Email exists"
+                          );
                     }
                     else{
                         const eSpace = theUsername.indexOf(' ') >= 0;
                         if (eSpace == true){
-                            theErrors["username_exists"] = "There's an extra space or y're using two words as your username"
-                            username_register(req, res, theErrors);
+                            return Response.send(
+                                res,
+                                200,
+                                "There's an extra space or y're using two words as your username"
+                              );
                         }
                         else{
                         const newUser = new userData({
@@ -47,7 +56,7 @@ exports.register = async function(req, res, next) {
                                 successRedirect: '/profile',
                                 failureRedirect: '/login',
                                 failureFlash: true
-                            })(req, res, next);
+                            })(req, res);
                         })
                     }}
             })}
