@@ -25,7 +25,7 @@ passport.use(new LocalStrategy(
       if (!user) { 
       	return done(null, false);
       }
-      User.comparePassword(password, user.password, (err, isMatch)=>{
+      userData.comparePassword(password, user.password, (err, isMatch)=>{
 		if(err) throw err
 		if(isMatch){
 			return done(null, user)
@@ -126,4 +126,12 @@ exports.login = function(req, res, next) {
             }
         }
     )
+}
+
+exports.profile = function(req, res, next) {
+    return Response.send(
+        res,
+        200,
+        "You are logged in"
+      )
 }
