@@ -14,7 +14,7 @@ var groupData= new mongoose.Schema({
 		type: String,
 	},
 	maximum_capacity: {
-		type: String,
+		type: Number,
 	},
 	searchable: {
 		type: String,

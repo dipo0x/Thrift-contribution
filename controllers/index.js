@@ -38,7 +38,7 @@ exports.group = async (req, res) => {
                     res,
                     200,
                     "Group created successfully and you are the admin"
-                    );
+                );
             })
         }}
     )
@@ -47,7 +47,6 @@ exports.group = async (req, res) => {
 exports.groups = async (req, res) => {
     groupData.find({}).then(groups=>{
         if(groups !== null){
-            const i =''
                 return Response.send(
                     res,
                     200,
@@ -67,23 +66,30 @@ exports.groups = async (req, res) => {
 }
 
 exports.join_group = async (req, res) => {
-    groupData.find({}).then(groups=>{
-        if(groups !== null){
-            const i =''
-                return Response.send(
-                    res,
-                    200,
-                    groups
-                );
-        }
-        else{
-           cnewGroup.save().then(()=>{
-                return Response.send(
-                    res,
-                    200,
-                    "No group yet, why don't you create a group"
+    const groupName = req.params.name
+    groupData.findOne({name:groupName}).then(group=>{
+        if(group){
+            console.log(group)
+            if(group.searchable == "Yes"){
+                    return Response.send(
+                        res,
+                        200,
+                        "Y've joined"
                     );
-            })
-        }}
-    )
+            }
+            else{
+                return Response.send(
+                    res,
+                    200,
+                    "Sorry, this group can't allow participant in at the moment"
+                );
+            }}
+            else{
+                return Response.send(
+                    res,
+                    200,
+                    `No group has ${groupName} as its name`
+                );
+            }
+        })
 }
