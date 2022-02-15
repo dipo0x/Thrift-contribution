@@ -5,6 +5,10 @@ exports.group = async (req, res) => {
     const theName = req.body.name
     const thePrice = req.body.amount
     const theAdmin = req.user.username
+    const theDescription = req.body.description
+    const theMaximumC = req.body.maximum
+    const searchable = req.body.searchable
+
     if(theName == '' || isNaN(thePrice) == true|| thePrice == ''){
         return Response.send(
             res,
@@ -24,7 +28,10 @@ exports.group = async (req, res) => {
            const newGroup = new groupData({
                 name: theName,
                 amount: thePrice,
-                admin: theAdmin
+                admin: theAdmin,
+                description: theDescription,
+                maximum_capacity: theMaximumC,
+                searchable: searchable
             })
             newGroup.save().then(()=>{
                 return Response.send(
@@ -38,6 +45,28 @@ exports.group = async (req, res) => {
 }
 
 exports.groups = async (req, res) => {
+    groupData.find({}).then(groups=>{
+        if(groups !== null){
+            const i =''
+                return Response.send(
+                    res,
+                    200,
+                    groups
+                );
+        }
+        else{
+           cnewGroup.save().then(()=>{
+                return Response.send(
+                    res,
+                    200,
+                    "No group yet, why don't you create a group"
+                    );
+            })
+        }}
+    )
+}
+
+exports.join_group = async (req, res) => {
     groupData.find({}).then(groups=>{
         if(groups !== null){
             const i =''

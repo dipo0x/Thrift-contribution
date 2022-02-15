@@ -10,6 +10,15 @@ var groupData= new mongoose.Schema({
 	admin: {
 		type: String,
 	},
+	description: {
+		type: String,
+	},
+	maximum_capacity: {
+		type: String,
+	},
+	searchable: {
+		type: String,
+	},
 	is_active:{
 		type: String, default: "No"
 	}

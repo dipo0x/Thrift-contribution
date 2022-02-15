@@ -6,8 +6,8 @@ const {hasAuth} = require('../middleware/hasAuth')
 /* EVERYTHING GROUP ACCESS */
 router.get('/groups', hasAuth, indexview.groups)
 router.post('/group', hasAuth, indexview.group)
+router.get('/group//join/:name', hasAuth, indexview.join_group)
 router.get('/group/:name/activate', hasAuth, indexview.activate_group)
-
-//router.get('/group/:name', hasAuth, indexview.get_group)
+router.get('/group/:name', hasAuth, indexview.get_group)
 
 module.exports = router;
