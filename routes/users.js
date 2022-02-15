@@ -7,7 +7,7 @@ const {hasAuth} = require('../middleware/hasAuth')
 router.post('/register', usersview.register)
 router.post('/login', usersview.login)
 
-/* EVERYTHING ACCOUNT ACCESS */
+/* EVERYTHING USER ACCESS */
 router.get('/profile', usersview.profile)
 
 module.exports = router;

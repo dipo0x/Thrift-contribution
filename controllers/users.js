@@ -130,7 +130,6 @@ exports.login = function(req, res, next) {
 }
 
 exports.profile = function(req, res, next) {
-    console.log("Here is it", req.user.username)
     return Response.send(
         res,
         200,
