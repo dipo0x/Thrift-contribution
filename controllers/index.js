@@ -174,6 +174,13 @@ exports.group_admin = (req, res, next) => {
     const theName = req.params.name
     groupData.findOne({name: theName}).then(group=>{
         if(group.admin == req.user.username){
+            userGroupData.findOne({group_name:theName}).then(details=>{
+                return Response.send(
+                    res,
+                    200,
+                    details
+                );
+            })
         }
     })
 }
