@@ -1,5 +1,6 @@
 const Response = require("../utils/response.handler.js");
 
+/* THIS MIDDLEWARE IS TO VERIFY IF USER IS LOGGED IN OR NOT */
 exports.hasAuth = function(req, res, next){
     if(req.user){
             next();

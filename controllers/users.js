@@ -45,6 +45,7 @@ exports.register = async (req, res) => {
     const newPassword = await bcryptjs.hash(thePassword, 10)
     const { errors, valid } = signup(theUsername, thePassword, theEmail);
     userData.findOne({username: theUsername}).then(user=>{
+        /* TO CHECK IF USER WITH THAT USERNAME EXISTS */
         if(user !== null){
             return Response.send(
                 res,
@@ -62,6 +63,7 @@ exports.register = async (req, res) => {
             }
             else{
                 userData.findOne({email: theEmail}).then(user=>{
+                    /* TO CHECK IF USER WITH THAT EMAIL EXISTS */
                     if(user){
                         return Response.send(
                             res,
@@ -71,6 +73,7 @@ exports.register = async (req, res) => {
                     }
                     else{
                         const eSpace = theUsername.indexOf(' ') >= 0;
+                        /* THIS IS TO AVOID USERS FROM PUTTING SPACE IN THEIR USERNAME*/
                         if (eSpace == true){
                             return Response.send(
                                 res,

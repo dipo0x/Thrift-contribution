@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 var userGroupData= new mongoose.Schema({
-	name: {
+	username: {
 		type: String,
 	},
 	group_name: {
@@ -9,6 +9,12 @@ var userGroupData= new mongoose.Schema({
 	},
 	amount: {
 		type: String,
-    }
+    },
+	remaining_balance:{
+		type: String
+	},
+	month_to_withdraw:{
+		type: Number
+	}
 })
 module.exports = mongoose.model('User Group Data', userGroupData)
