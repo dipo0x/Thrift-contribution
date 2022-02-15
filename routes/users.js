@@ -8,6 +8,6 @@ router.post('/register', usersview.register)
 router.post('/login', usersview.login)
 
 /* EVERYTHING USER ACCESS */
-router.get('/profile', usersview.profile)
+router.get('/profile', hasAuth, usersview.profile)
 
 module.exports = router;

@@ -10,6 +10,8 @@ var groupData= new mongoose.Schema({
 	admin: {
 		type: String,
 	},
-	
+	is_active:{
+		type: String, default: "No"
+	}
 })
 module.exports = mongoose.model('Group', groupData)

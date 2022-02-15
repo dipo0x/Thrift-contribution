@@ -2,6 +2,7 @@ const express = require('express');
 var app = express();
 const {database} = require('./config')
 var usersRouter = require('./routes/users');
+var indexRouter = require('./routes/index');
 var cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
 const session = require('express-session');
@@ -35,6 +36,7 @@ app.use(passport.session());
 
 database()
 app.use('/', usersRouter);
+app.use('/', indexRouter);
 
 app.listen(process.env.PORT);
 
