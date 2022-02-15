@@ -17,18 +17,16 @@ passport.deserializeUser(function(id, done){
 	})
 })
 
-///fix why it is not logging in
-
 passport.use(new LocalStrategy(
   function(username, password, done) {
     userData.findOne({ username: username}, function (err, user) {
       if (err) { 
-          console.log(err)
+          return done(err); 
         }
       if (!user) { 
       	return done(null, false);
       }
-      userData.comparePassword(password, user.password, (err, isMatch)=>{
+      User.comparePassword(password, user.password, (err, isMatch)=>{
 		if(err) throw err
 		if(isMatch){
 			return done(null, user)
@@ -132,6 +130,7 @@ exports.login = function(req, res, next) {
 }
 
 exports.profile = function(req, res, next) {
+    console.log("Here is it", req.user.username)
     return Response.send(
         res,
         200,
