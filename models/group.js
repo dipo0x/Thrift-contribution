@@ -5,7 +5,7 @@ var groupData= new mongoose.Schema({
 		type: String,
 	},
 	amount: {
-		type: String,
+		type: Number,
 	},
 	admin: {
 		type: String,

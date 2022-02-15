@@ -8,10 +8,10 @@ var userGroupData= new mongoose.Schema({
 		type: String,
 	},
 	amount: {
-		type: String,
+		type: Number,
     },
 	remaining_balance:{
-		type: String
+		type: Number
 	},
 	month_to_withdraw:{
 		type: Number
