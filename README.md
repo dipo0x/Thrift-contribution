@@ -1,11 +1,13 @@
 # Esusu-Confam-Ltd
 
+I went on a personal hackathon and built a monthly contribution (Esusu) 😅 API in less than 24 hours but I didn't add any payment gateway with NodeJS, Express JS, Mongoose, Bcryptjs and Passport JS
+
 A group would be created then folks join. When you Join the group, y'll be given a random number between 1 - 12 then once 12 people have joined, the contribution kicks off and people who join after would be assigned numbers subsequently (13, 14, 15)
 
 A group could be searchable, so I can tell someone else to join the group and it could also be hidden. Then it has maximum capacity. The group also has a fixed amount
 
 Then once you join, y'll begin to pay your contribution so once you hit the total amount you ought to pay, y'll be given your money
-Building this within 24 hours wasn't easy and I might not have written the best codes but you can learn a little bit of Node and Express JS from it
+Building this within 24 hours wasn't easy and I might not have written the best codes but you can learn a little bit of Node and Express JS from it.
 
 # Installation
 To install all the dependencies, type ```npm install``` in the root directory
